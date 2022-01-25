@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>리엑트 TEST</title>
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+	<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script type="text/babel">
+		const root = document.getElementById("root");
+		const Title = (
+			<h3 id="title" onMouseEnter={() => console.log("마우스 엔터")}>
+				안녕 나는 타이틀
+			</h3>
+		);
+		const Button = (
+			<button
+				style={{
+					backgroundColor: "tomato"
+				}}
+				onClick={() => console.log("클릭되었다")}
+			>
+				클릭
+			</button>
+		);
+		// const h3 = React.createElement(
+		// 	"h3",
+		// 	// {id: "sexy-span", style: {color: "red"}},
+		// 	{
+		// 		id: "title",
+		// 		onMouseEnter: () => console.log("마우스 엔터")
+		// 	},
+		// 	"HI, this is span"
+		// );
+		// const btn = React.createElement(
+		// 	"button",
+		// 	{
+		// 		onClick: () => console.log("클릭"),
+		// 		style: {backgroundColor: "tomato"}
+		// 	},
+		// 	"클릭"
+		// );
+
+		const container = React.createElement("div", null, [Title, Button]);
+		ReactDOM.render(container, root);
+	</script>
+</html>
