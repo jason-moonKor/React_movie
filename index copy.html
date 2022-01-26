@@ -15,15 +15,25 @@
 	<script type="text/babel">
 		const root = document.getElementById("root");
 		function App() {
-			const [count, plusCount] = React.useState(0); //배열 첫번째는 기본값, 두번째값은 변경될 값(리액트가 저절로 변경해줌) React.useState()안에 값은 기본초기값
-			const onClick = () => {
-				// plusCount(count + 1);
-				plusCount((current) => current + 1);
+			const [minutes, setMinutes] = React.useState();
+			const onChange = (e) => {
+				// console.log(e.target.value);
+				setMinutes(e.target.value);
 			};
 			return (
 				<div>
-					<h3>TOTAL CLICK : {count} </h3>
-					<button onClick={onClick}>클릭버튼</button>
+					<h3 className="hi">Super Converter</h3>
+					<label htmlFor="minutes">분</label>
+					<input
+						onChange={onChange}
+						value={minutes}
+						id="minutes"
+						placeholder="분"
+						type="number"
+					/>
+					<h4>바꾸고자 하는것은 : {minutes}</h4>
+					<label htmlFor="hours">시간</label>
+					<input id="hours" placeholder="시" type="number" />
 				</div>
 			);
 		}
