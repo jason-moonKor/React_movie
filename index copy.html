@@ -9,34 +9,64 @@
 	<body>
 		<div id="root"></div>
 	</body>
-	<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+	<script src="https://unpkg.com/react@17.0.2/umd/react.development.min.js"></script>
 	<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 	<script type="text/babel">
-		const root = document.getElementById("root");
-		function App() {
-			const [minutes, setMinutes] = React.useState();
+		function MinutesToHours() {
+			const [amount, setAmount] = React.useState(0);
+			const [flipped, setFlipped] = React.useState(false);
 			const onChange = (e) => {
 				// console.log(e.target.value);
-				setMinutes(e.target.value);
+				setAmount(e.target.value);
+			};
+			const reset = () => {
+				setAmount(0);
+			};
+			const onFlip = () => {
+				reset();
+				setFlipped((current) => !current);
 			};
 			return (
 				<div>
-					<h3 className="hi">Super Converter</h3>
-					<label htmlFor="minutes">분</label>
-					<input
-						onChange={onChange}
-						value={minutes}
-						id="minutes"
-						placeholder="분"
-						type="number"
-					/>
-					<h4>바꾸고자 하는것은 : {minutes}</h4>
-					<label htmlFor="hours">시간</label>
-					<input id="hours" placeholder="시" type="number" />
+					<div>
+						<label htmlFor="minutes">분</label>
+						<input
+							value={flipped ? amount * 60 : amount}
+							id="minutes"
+							placeholder="분"
+							type="number"
+							onChange={onChange}
+							disabled={flipped}
+						/>
+					</div>
+					<div>
+						<label htmlFor="hours">시간</label>
+						<input
+							value={flipped ? amount : amount / 60}
+							id="hours"
+							placeholder="시"
+							type="number"
+							disabled={!flipped}
+							onChange={onChange}
+						/>
+					</div>
+					<button onClick={reset}>리셋 버튼</button>
+					<button onClick={onFlip}>{flipped ? "바꾸기" : "invert"}</button>
 				</div>
 			);
 		}
+		function App() {
+			return (
+				<div>
+					<h1 className="hi">Super Converter</h1>
+					<MinutesToHours />
+				</div>
+			);
+		}
+
+		const root = document.getElementById("root");
 		ReactDOM.render(<App />, root);
 	</script>
 </html>
