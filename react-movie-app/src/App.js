@@ -1,8 +1,80 @@
-import Button from "./Button";
-import styles from "./App.module.css";
-import {useState, useEffect} from "react";
+// import Button from "./components/Button";
+// import styles from "./App.module.css";
+// import {useState, useEffect} from "react";
 //useEffect = 한번만 실행됨(ex.API같이 한번만 읽어오면 될때 사용함)
+// import Movie from "./components/Movie";
 
+function App() {
+	return null;
+}
+
+/*
+function App() {
+	const [loading, setLoading] = useState(true);
+	const [coins, setCoins] = useState([]);
+	useEffect(() => {
+		fetch("https://api.coinpaprika.com/v1/tickers")
+			.then((res) => res.json())
+			.then((json) => {
+				setCoins(json);
+				setLoading(false);
+			});
+	}, []);
+	return (
+		<div>
+			<h1>코인! {loading ? "" : `(${coins.length})`}</h1>
+			{loading ? (
+				<strong>Loading....</strong>
+			) : (
+				<select>
+					{coins.map((coin) => (
+						<option>
+							{coin.name}({coin.symbol}) : {coin.quotes.USD.price} USD
+						</option>
+					))}
+				</select>
+			)}
+		</div>
+	);
+}
+*/
+// function App() {
+// 	const [toDo, setTodo] = useState("");
+// 	const [toDos, setToDos] = useState([]);
+// 	const onChange = (e) => {
+// 		setTodo(e.target.value);
+// 	};
+// 	const onSubmit = (e) => {
+// 		e.preventDefault();
+// 		if (toDo === "") {
+// 			return;
+// 		}
+// 		setToDos((currentArray) => [toDo, ...currentArray]);
+// 		setTodo("");
+// 	};
+// 	console.log(toDos);
+// 	return (
+// 		<div>
+// 			<h1>TODO LIST ({toDos.length})</h1>
+// 			<form onSubmit={onSubmit}>
+// 				<input
+// 					onChange={onChange}
+// 					value={toDo}
+// 					type="text"
+// 					placeholder="write here ToDo List"
+// 				/>
+// 				<button> Add To do</button>
+// 			</form>
+// 			<hr />
+// 			<ul>
+// 				{toDos.map((item, idx) => (
+// 					<li key={idx}>{item}</li>
+// 				))}
+// 			</ul>
+// 		</div>
+// 	);
+// }
+/*
 function Hello() {
 	useEffect(() => {
 		//useEffect 함수 안에 return값은 해당함수가 없어질때 나타남
@@ -22,7 +94,7 @@ function App() {
 		</div>
 	);
 }
-
+*/
 /*
 function App() {
 	const [count, setValue] = useState(0);
